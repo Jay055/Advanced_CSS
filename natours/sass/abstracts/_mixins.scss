@@ -1,0 +1,8 @@
+@mixin clearfix {
+  &::after {
+    content: "";
+    display: table; 
+    clear: both;
+  }
+  // psuedu element to clear the grid flot. 
+}

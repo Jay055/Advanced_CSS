@@ -1,0 +1,554 @@
+// Welcome to Advanced CSS. 
+
+Natuors 
+Basic reset using universal selector. 
+How to set project wide font definitions. 
+How to clip parts of elements using clip-path. 
+
+
+Building the header
+
+
+1. Basic Reset: To make the website universal across platforms. 
+We use the universal selector 
+*{ margin:0; padding; 0, box-sizing: border-box; }
+for the fonts it's advisable to use the body as the universal selector. 
+
+  box-sizing: border box ; removes the default padding and margin being added to a box.
+
+Everything related to font would be done in the body.
+
+body { font-family: "Lato", sans-serif; font-weight: 400; 
+  font-size: 16px;   line-height: 1.7; color: #777 padding: 30px;
+}
+
+.header{ 
+  95vh: view height, preferable to use as it's more universal across platforms. 
+  background image: here we learnt how to use two background images by placing the  one which should be ontop first. 
+  background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.808), rgba(40, 180, 133, 0.795)), url(../img/hero.jpg);
+
+  postion: relative - We have a fixed point for positioning our absolute elements. 
+  clip-path: polygon - use to get various shapes. 
+
+}
+top: 50%;
+  left: 50%;
+  for perfect positioning in the middle we would need to use the 
+  transform: translate(-50%,-50%)
+Fixes is at the perfect spot. 
+
+
+<span> Display block.
+We need our header to contain the most important elements in the file. We can achieve multiple line and different styled headers by using the <span> property. 
+
+
+
+background-position: Select area's you want permanetly fixed and areas that might get cropped out on smaller resolutions.  
+
+
+Polygon to shape images. 
+clip-path: polygon(0 0, 100% 0, 100% 50%, 0 100%)
+polygon(x y, xy, xy) 
+We can use the https://bennettfeely.com/clippy/ to get the the values.
+
+
+// Creating Cool CSS Animations 
+Steps in creating an animation.
+1. @keyframes animationname {
+   0% {
+    opacity: 0; 
+    transform: translateX(-100px);
+  }
+  80%{
+    opacity: 0.5;
+    transform: translateX(10px);
+  }
+
+  100% { 
+    opacity: 1; 
+    transform: translate(0);
+  }
+}
+
+2. After which we include the animation name to the element need to animate. 
+    animation-name: moveInLeft;
+    animation-duration: 1s;
+
+// Building a Complex Animated Button Part 1 
+Expected objective 
+a. What pseudo-elements and pseudo-classes are. 
+b. How to create a creative hover animation effect using the transisiton property. 
+
+1. btn:link; link here is  a psuedo class. 
+Special states of a selector. Used to style special cases of a selector eg hover, click, link, visited
+2.
+
+psuedo classes: link and visited, hover and active
+.btn:link,
+.btn:visited { 
+    text-transform:uppercase;
+    text-decoration: none;
+    padding: 15px 40px;
+    display: inline-block; // displays in a seperate line. 
+    border-radius: 100px; 
+    transition: all .2s; // add animation to all classes. 
+    /* traisistion should be in the intial state  */
+    
+}
+
+.btn:hover {
+  transform: translateY(-3px); Move up on hover animation
+  box-shadow: 0 10px 20px rgba(0,0,0,.2);  Shadow effect 
+}
+
+.btn:active { 
+  transform: translateY(-1px); move up 
+  box-shadow: 0 5px 20px rgba(0,0,0,.2); have a shadow effect .
+}
+
+.btn-white { 
+  background-color: #fff;
+  color: #777;
+  
+}
+
+For centering the button we don't need to do absolute positioning rather we just text-align center since it's assumped to be a text. 
+
+
+// Building a Complex Animated Button  2 
+* After element display. psudo */
+.btn::after {
+  content: ""; 
+  display: inline-block;
+  height: 100%;  // 100% indicates same like the inital. 
+  width: 100%;
+  border-radius: 100px;
+  position: absolute;  // Absolute positioning, we would find the relative position. 
+  top: 0; 
+  left:0;
+  z-index: -1;
+  transition: all .4s;
+}
+
+.btn-white::after { 
+  background-color: #fff;
+}
+
+.btn:hover::after { 
+  transform: scaleX(1.3) scaleY(1.5);
+  opacity: 0;
+  animation-name: moveInButton;
+}
+
+.btn-animated { 
+  animation: moveInButton .5s ease-out .75s;
+  animation-fill-mode: backwards;
+}
+
+
+
+/* Creating Animations for Button */
+@keyframes moveInButton {
+  0% {
+    opacity: 0; 
+    transform: translateY(30px);
+  }
+  80%{
+    opacity: 0.5;
+    transform: translateY(0px);
+  }
+
+  100% { 
+    opacity: 1; 
+    transform: translate(0);
+  }
+}
+
+// UNDERSTANDING CSS BEHIND THE SCENES 
+THE THREE PILLARS OF WRITING GOOD HTML AND CSS ( NEVER FORGET THEM )
+a. Responsive Design 
+Fluid Layouts 
+Media Queries 
+Responsive images 
+Correct units 
+Desktop first vs mobile first
+
+b.  Maintainable and scalable code 
+Code clean, easy to use and re-usable. 
+Organizing files. 
+How to name classes 
+How to structure HTML
+
+c. Web performance. 
+Smaller and faster. 
+Less Http request 
+less code 
+compress code 
+use a css preporcessor 
+less images 
+compress images. 
+
+// A look behind the scenes: An overview. 
+What happens to our CSS code when we load the page. 
+Load HTML -> Parse HTML                       --------> Document Object Model (DOM)
+In the Parsing HTML we load CSS and Parse CSS. Then we have the CSS object model. 
+
+
+// How is CSS Parsed:
+Selector and Declaration block. 
+property: Declared Value. 
+
+
+The Cascade ("C" in the CSS)
+Cascade: PROCESS OF COMBINING DIFFERENT STYLESHEETS AND RESOLVING Conflicts between different CSS roles and declarations, when more that one rule applies to a certain element. 
+CSS Sources: Author, User and Browser(user Agent).
+How Does the CASCADE decide which rule to apply. 
+Importance(Weight) > Specificity ? Source Order
+
+Importance. 
+1. User !important declarations 
+2. Author !important 
+3. Author declarations
+4. User declarations
+5. Default browser
+
+If the importance are all the same CSS uses specificity.
+Specificity
+1. Inline Styles 
+2. IDs 
+3. Classes, pseudo classes, attribute. 
+4. Elements, psudo elements.
+(0,1,2,4) (1)
+
+If the specificity is also the same
+Source Order:
+The last declaration in the code will override all other declaration and will be applied.
+
+Summary> 
+1. CSS declaration smarked with !important have the highest priority. 
+2. Only use !important as a last resource for more maintainable code. 
+3. Inline style will always have priority over styles in external stylesheets. 
+4. A selector with 1 ID > 10class > 100 Element 
+5. Universal selector * has no specificity value. 
+6. Rely more on specifificy than on the order of selectors.
+7. Rely on order when using 3rd-party stylesheets - always put your author sytlesheet last.
+
+// HOW CSS IS PARSED PART 2. VALUE PROCESSING 
+1. Declared Value 
+2. Cascaded Value 
+3. Specified Value. 
+4. Computed Value. 
+5. Used Value. 
+6. Actual Value. 
+
+// How units are converted from Relative to Absolute (px)
+%(fonts) = reference parents Computed font size . 
+
+1. Each property has an initial value used if nothing is declared and if there is no inheritance.
+2. Browsers specify a root font size for each page (usually 16px)
+3. Percentages and relative values are always converted to pixels. 
+4. Percentages are measured relative to thier paren't font size, if used to specify font-size and parent's width if used to specify length. 
+5. em are measured relaive to thier parent font size: font size, relative to current font size - length,. 
+6. rem relative to document's root font size.
+7.vvh and vw are simply percentage measurements of the viewport's height and width. 
+
+//Inheritance in CSS
+Each CSS porperty must have a value. 
+When searching for a property 
+1. Is there a cascaded value?
+2. Can the property be inherited.? 
+
+Inheritance passes the values for some specific properties from parents to children -- more maintanable code. 
+
+1. Properties related to text are inherited
+2. The computed value gets inherited.
+3. Margins are not inherited.
+4. The inherit keyword forces inheritance on a certain property. 
+
+
+// Converting px to Rem: An effective Workflow 
+How and why to use rem units in our project 
+A great workflow for converting px to rem 
+
+We set the root font size 
+
+html { 
+font-size: 62.5% 
+}
+It's better we use percentages for the values. 
+The default size is 16px, so to get 10px we use 62.5% to make it more dynamic for different users. 
+1 rem is exactly the root font size. 
+
+Convert all our values to rem  to make more responsive. 
+
+//Using the inherit Property, after and before reset values.
+
+*,
+*::after,
+*::before {
+  margin: 0; 
+  padding: 0; 
+  box-sizing: inherit;
+}
+We use the after and before to avoide problems associated with working with the after and before elements. 
+
+html { 
+  font-size: 62.5%;
+}
+
+body { 
+  font-family: "Lato", sans-serif; 
+  font-weight: 400; 
+  font-size: 1.6rem; 
+  line-height: 1.7; 
+  color: #777;
+  padding: 3rem;
+  box-sizing: border-box;
+}
+
+2. It's advisable to give the box sizing to the body element with other elements inheriting from it. 
+
+
+
+//<-----------19 HOW CSS RENDERS A WEBSITE: THE VISUAL FORMATTING MODEL -------------> 
+VISUAL FORMATTING MODEL: ALGORITHM THAT CALCULATES BOXES and determines the layout of these boxes, for each element in the render tree in order to determine the final layout of the page. 
+The following would be considered: 
+1. Dimensions of boxes: The Box model. 
+2. Box type: inline, block and inline-block. 
+3. Positioning scheme: floats and positioning. 
+4. Stacking contexts. 
+5. Other elements in the render tree. 
+6. Viewport size, dimensions of images, etc.
+Combination of these factors, the browser figures out how the final website would look like for the user. 
+
+1. The Box Model 
+According to the box model: Each and every element can be displayed as a rectangular box. 
+Context: Text mages etc 
+Padding: Transparent area around the content, inside the box. 
+Border: goes around the padding and the content. 
+Margin: Space between the boxes. 
+Fill Area: area that gets filled with the background color or background image. 
+
+The box model heights and widths: 
+total width = right border + right padding + specified width + left padding + left border 
+Therefore we can have problems if we declare width of 100 with padding. 
+Box-sizing: border-box; solves this problem and ensure paddings are including in the size. 
+
+2. BOX TYPES: INLINE, BLOCK-LEVEL AND INLINE-BLOCK
+Block-level Boxes: 
+1. Elements formatted visually as blocsk 
+2. 100% of parent's width. 
+3. Vertically, one after another 
+4. Box-model applies as showed 
+display: block
+ 
+ INLINE BOXES 
+ 1. Content is distributed in lines. 
+ 2. Occupies only content's space. 
+ 3. No line breaks
+ 4. No heights and widths. 
+ 5. Paddings and margins only horizontal (left and right)
+    display: inline
+
+Inline block boxes: 
+A mix of block and inline 
+Occupies on ly contents space 
+No line breaks 
+Box model Appies as showed 
+display: inline-block
+
+
+3. POSITIONING SCHEMES : NORMAL FLOW, ABSOLUTE POSITIONING AND FLOATS 
+
+4. STACKING CONTEXTS 
+Z-index. 
+
+
+/// CSS ARCHITECTURE , COMPONENTS AND BEM 
+THINK    ... BUILD ..... ARCHIETECH
+THINK 
+Component driven Design
+1. Modular building blocks that make up interfaces. 
+2. Held together by the layout of the page.
+3. Re-usable across a project and between different projects. 
+4. Independent allowing us to use them anywhere on the page
+
+
+BUILD 
+Naming Classes: BEM Block Elememtn Modifier 
+Block Standaone component that is meaningful on its own. 
+Elemenet: part of a block that has no standalone meaning 
+Modifier: A different version of a block or an element. 
+
+ARCHITECT 
+the 7 -1 pattern 
+& different folders for partial Sass files and 1 main Saff file to import all other files
+into a compiled css stylesheet. 
+The 7 folders 
+base/ 
+component/
+layout/
+pages/
+themes/
+abstracts/
+vendors/
+
+
+// SASS 
+WHAT IS SASS
+Sass is a CSS preprocessor, an extension of CSS that adds power and elegance to the basic language. 
+Sass Source Code ----------> (Sass Compiler) ------>   Compiled CSS Code 
+Helps make CSS reusable and readable. 
+
+Main SASS Features 
+Variables :
+Nesting 
+Operators 
+Partials and imports
+Mixiong 
+Functions 
+Extends 
+Control directives 
+
+Introduction to SASS 
+Functions 
+Emit 
+Extends 
+
+
+NPM INstall SASS LOcally 
+npm install node-sass --save-dev
+Create a scss file. 
+Copy all css code into the scss code 
+
+rgba(126, 213,  111, 0.808),
+Sass can accept variables for rgba values. 
+   rgba($color-primary-light, 0.808),
+
+//COMPILING SASS
+1. Change the SASS file 
+"scripts": {
+    "compile:sass": "node-sass sass/main.scss css/style.css -w"
+
+2. npm run compile:sass
+
+// CONVERTING CSS CODE WITH SASS
+We would work with more variables 
+$color-grey
+Work with nesting of classes and elements. 
+
+
+
+
+// IMPLEMENTING THE 7-1 CSS ARCHETECTURE WITH SASS
+Working on huge projects it's important to have a structure like this
+
+1. /Base: The base styles 
+    _animations
+    _typography : Realated to fonts and margins.
+    _utilities
+
+
+2. ./abstracts : codes that wouldn't help with css
+      _variables 
+      _mixins : save properties which you can copy.
+      _functions
+
+3. ./components : reusable building blocks, held together by the layout of the page.
+
+4.    ./layout:  holds all the components together.
+         _header
+          
+5. ./pages        : styles applying to a specific page. 
+      _home.
+
+6. ./vendors : frameworks 
+
+
+Partial files are saved with the _. 
+
+
+// BASIC PRINCIPLES OF RESPONSIVE DESIGN AND LAYOUT TYPES 
+1. FLUID GRIDS AND LAYOUTS 
+  To allow content to easily adapt to the current viewport width used to browse
+  the website. Uses % rather than px.
+2. FLEXIBLE / RESPONSIVE IMAGES 
+  Images behave differently than text content, we need to ensure they also adapt 
+  nicely to the current view port. 
+3. MEDIA QUERIES 
+  To change the styles on certain viewport widths (breakpoints) allowing 
+  us to create different version of websites for different widths. 
+
+
+
+LAYOUT TYPES 
+1. Float Layouts 
+2. Flexbox 
+3. Css Grid. 
+
+// 34 BUILDING A CUSTOM GRID WITH FLOATS 
+Expected to learn 
+1. How to architech and build a simple grid system. 
+2. How the attribute selector works. 
+3. How the : not pseudo-class works 
+4. How calc() works and what's the difference between calc() and 
+simple Sass operations. 
+
+
+Grid: Design system to design consistent interfaces. 
+
+
+Things to note: 
+max-width: 114rem; if there's enough space for 114 rem fill up, if not fill up 
+the available space. 
+
+margin: 0 auto; centers it since the left and right element would be same 
+
+// Attribute selectors: ^ starts with, * contains, $ends with 
+
+  // width vs max width: max width adapts to available space
+  //  margin: auto: left and right margin sameautomatic way to center block elements within themselves
+  //not(:) :Apply property to  every element except the one specified
+  // float: occupies the entire space 
+
+Create grid for future refrencing of projects. 
+
+
+//BUILDING THE ABOUT SECTION PART 1 
+Expected to learn 
+1. Thinking about components. 
+2. How and why to use utility classes.
+3. How to use the background-clip property. 
+4. How to transform multiple properties simultaneously. 
+5. How to use the outline-offset property together with outline.
+6. How to style elements that are NOT hovered while others are. 
+
+
+Background clip: 
+-webkit-background-clip: text; we clip the background to the text only. 
+
+*Utilitity classes are created just to hanlde one or two unique properties.
+* We just copy from our grid family classes whatever we want to use. 
+
+//<---------- 32 BUILIDNG THE ABOUT SECTION PART 2 ------------> 
+We create utility classes to change specific values, making our codes more reusable. 
+1. utilitity classes are created just to hanlde one or two unique properties 
+.u-center-text {  text-align: center;}
+.u-margin-bottom-big {  margin-bottom: 4.5rem;}
+.u-margin-bottom-medium {  margin-bottom: 8rem;}
+.u-margin-bottom-small {  margin-bottom: 2rem;}
+
+
+Resources in coding heroes for pics
+
+//<---------- 37 Building About Section 3 ------->
+Added Component composition. 
+App Images with positioning. Composition.scss
+
+//<------- 38 Building the Features Section -------> 
+Expected to learn 
+1.How to include and use an icon font
+2. Another way of creating the "skewed section"
+3. How and when to use the direct child selector. 
+
+
