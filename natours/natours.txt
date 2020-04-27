@@ -551,4 +551,29 @@ Expected to learn
 2. Another way of creating the "skewed section"
 3. How and when to use the direct child selector. 
 
+//<----------BUILDING THE TOURS SECTION -------> 
+Expected to learn.  Card Section SASS.
+1. Build amazing rotating card. 
+2. Perpective in CSS: Make the cards turn better. 
+3. Backface visibility property. : All in t
+4. Background blend modes. 
+
+5. Use box-decoration-break.: 
+-webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+    // Give padding to seperated text. Applies all the properties to all the boxes. 
+
+Try to use semantic tags. 
+
+
+
+//<-- 41  BUILDING THE TOURS SECTION PART 3 ------> 
+
+Positioning in the middle: 
+top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); // Important to help perfect middle position. 
+
+Challenges Encountered: 
+Button looked ugly and bigger because of the allocated width space. 
 
