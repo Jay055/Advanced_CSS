@@ -627,3 +627,52 @@ aspect ratio.
 6. Introduction to <figcaption> tag. 
 
 Centering:// Block element inside a block element. Centering margin: 0 auto;
+
+
+
+// 43 BUILDING THE BOOKING SECTION >
+1. How to implement "solid color gradient".
+ background-image: linear-gradient(105deg,
+    rgba($color-white, .9) 0%,   // Select the color and percentage to start from 
+    rgba($color-white, .9) 50%, // it's still white till 50%, then turns transparent
+    transparent 50%),     // Automatically the picture takes over since it's transparent
+url(/img//nat-10.jpg);
+
+
+2. How the general and adjacent sibling selectors work and why we need them. 
+3. How to use the ::input-placeholder psudoelement
+** INput and label are simblings so you have to select them with the  adjacent simbling selector "+". "~" general simbling selector.
+Adjacent indicating it comes immediately after the element selected.
+
+&__input:placeholder-shown + &__label {  // We want the label to be hidden. 
+
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-4rem); // move down on typing. 
+    }
+4. :focus, :invalid, :checked pseudo classes
+
+Typing Validation with CSS:
+// When we have an invalid focused element, we want a border that's orange. 
+ &:focus:invalid {
+            border-bottom: 3px solid $color-secondary-dark;
+        }
+
+5. Techniques to build custom radio buttons.
+
+
+
+Working with Forms 
+Form.scss 
+
+Do not completely remove the outline on focus/input for a form for people who might access with keyboards.
+
+&::-webkit-input-placeholder {  /// Change the color of the place holder 
+            color: $color-grey-dark-2;
+        }
+
+
+* Why don't we use just visibility as hidden and then ignore using the opacity: 
+We cannot animate the visibility.
+
+
