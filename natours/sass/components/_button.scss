@@ -1,5 +1,6 @@
 
 .btn{
+  &,
   &:link,
   &:visited { 
       text-transform:uppercase;
@@ -14,10 +15,17 @@
   
     animation: moveInButton .5s ease-out .75s;
     animation-duration: 1s;
-      
+    
+     // Change the button in the form section
+     border:none;
+     cursor: pointer;
+    
+   
+
   }
   
-  &:hover {
+  &:hover,
+  &:focus {
     transform: translateY(-3px);
     box-shadow: 0 1rem 2rem rgba($color-black,.2);
   }
@@ -26,7 +34,11 @@
       opacity: 0;
       animation-name: moveInButton;
     }
-  &:active { 
+  &:active,
+  &:focus
+   { 
+    // make the outline with the focus none
+    outline: none;
     transform: translateY(-1px);
     box-shadow: 0 .5rem 2rem rgba($color-black,.2);
   }
