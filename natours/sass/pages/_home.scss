@@ -3,6 +3,11 @@
   padding: 25rem 0;
   margin-top: -20vh;
   // margin top: 95vh - (polygon)
+  
+  // Add MQ to reduce padding 
+  @include respond(tab-port) {
+   padding: 20rem 0;
+  }
 
 }
 
@@ -27,6 +32,10 @@
     transform: skewY(7deg);
 
   }
+  // Add MQ to reduce padding 
+  @include respond(tab-port) {
+    padding: 10rem 0;
+   }
 
 
   // clip-path: polygon(0 15%, 100% 0, 100% 85%, 0 100%);
@@ -36,9 +45,14 @@
 
 .section-tours { 
   background-color: $color-grey-light-1;
-  padding: 25rem 0 50rem 0;
+  padding: 25rem 0 15rem 0;
   margin-top: -7.5rem;
   // text-align: center;
+
+  // Add MQ to reduce padding 
+  @include respond(tab-port) {
+    padding: 20rem 0 10rem 0;
+   }
 }
 
 
@@ -50,14 +64,18 @@
   padding: 15rem 0; 
   position: relative; 
 
-
+  @include respond(tab-port) {
+    padding: 10rem 0;
+   }
 }
-
-
 
 .section-book { 
   padding: 15rem 0; 
   background-image: linear-gradient(to right bottom, $color-primary-light, $color-primary-dark);
+
+  @include respond(tab-port) {
+    padding: 10rem 0;
+   }
 }
 
 .book { 
