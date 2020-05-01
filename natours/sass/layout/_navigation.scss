@@ -1,0 +1,183 @@
+// On click navigation 
+
+.navigation { 
+ 
+  &__checkbox {
+    // We don't need to see the checkbox, just the label button
+    display: none;
+  
+
+  }
+  // menu button , would be placed behind the background
+  &__button {
+    background-color: $color-white;
+    height: 7rem;
+    width: 7rem;
+    position: fixed;
+    top: 6rem;
+    right: 6rem;
+    border-radius: 50%;
+    z-index:2000;
+    box-shadow: 0 1rem 3rem rgba($color-black, .1);
+    text-align:center;
+    cursor: pointer;
+
+  }
+  &__list {
+    text-decoration: none;
+  }
+
+
+
+  
+  &__background {
+    height: 7rem;
+    width: 7rem;
+    border-radius: 50%;
+    position: fixed;
+    top: 6.5rem;
+    right: 6.5rem;
+    background-image: radial-gradient($color-primary-light, $color-primary-dark);
+    z-index: 1000;
+
+    // Animate on check, customize animation timing with cubic bezier
+    //cubic-bezier.com/
+    transition: transform .8s cubic-bezier(0.86, 0, 0.07, 1);
+    // transform: scale(100);
+
+
+  }
+  
+  &__nav {
+    height: 100vh;
+    
+    position: fixed;
+    top: 0%;
+    right: 0%;
+
+    z-index: 1200;
+    // hide navigation and background
+    opacity: 0;
+    width: 0;  // hide links
+
+    transition: all 0.8s;
+  }
+
+  &__list {
+    position: absolute;
+    top: 50%;
+    left:50%;
+    transform: translate(-50%, -50%);
+    // get rid of bullets 
+    list-style:none;
+    text-align: center;
+    width: 100;
+  }
+  &__item {
+    margin: 1rem;
+  
+ 
+  }
+  &__link {
+    &:link,
+    &:visited {
+      display:inline-block;
+    font-size: 3rem;
+    font-weight: 300;
+    padding: 1rem 2rem;
+    color:$color-white;
+    text-decoration: none;
+    text-transform: uppercase;
+    
+    // background effect
+    background-image: linear-gradient(120deg, transparent 0%,transparent 50%, $color-white 50%);
+    background-size: 230%;
+    transition: all .4s;
+    // you can move background gradients 
+   
+    }
+    &:hover,
+    &:active {
+      // shift the background
+      background-position: 100%;
+      color: $color-primary;
+      transform: translateX(1rem);
+
+
+    }
+    span {
+      margin-right: 1.5rem;
+      display: inline-block;
+  }
+  
+  }
+
+  
+  // Hidden checkbox label behind the menu should would on check make the background and nav visible.
+
+  &__checkbox:checked ~ &__background {
+    transform: scale(100);
+
+  }
+  &__checkbox:checked ~ &__nav {
+    opacity: 1;
+    width:100%;
+
+  }
+  // ICON
+   // Set Psuedo Span elements to have lines
+  &__icon {
+    position: relative;
+    margin-top: 3.5rem;;
+    
+
+    &,
+    &::before,
+    &::after {
+      width: 3rem;
+      height: 2px;
+      background-color: $color-grey-dark-3;
+      display: inline-block;
+      
+    
+    }
+
+   
+    
+    &::before,
+    &::after{
+      content:"";
+      position: absolute;
+      left: 0;
+      transition: all .2s;
+    
+      // always using the transistion on the plane property.
+    }
+
+    &::before { top: -.7rem;}
+    &::after { top: .7rem;}
+  }
+
+  &__button:hover &__icon::before { 
+    top:-1rem;
+  }
+  &__button:hover &__icon::after {
+    top: 1rem;
+  }
+
+  // Rotate Before and After lines and make the static line (icon) dissappear 
+
+  &__checkbox:checked + &__button &__icon {
+    background-color: transparent;
+  }
+
+  &__checkbox:checked + &__button &__icon::after {
+    top:0;
+    transform:rotate(135deg)
+  }
+  &__checkbox:checked + &__button &__icon::before {
+    top:0;
+    transform:rotate(-135deg)
+  }
+
+}
