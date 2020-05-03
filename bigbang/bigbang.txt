@@ -1,0 +1,35 @@
+INTRODUCTIONS TO FLEX BOX LAYOUT 
+
+Flexbox is a new moduel to CSS3 to make aligning elements easy. 
+Replaces float layouts
+
+
+FlexBox Properties Overview 
+
+CONTAINER 
+1. flex-direction: row | row-reverse | column | column-reerse 
+2. flex-wrap: wrap into a new line if there's no space
+3. justify-content: aligned on the main axis
+4. aligh-items: aligned on the cross axis.5
+5. align-content: strech
+
+
+ITEMS 
+1. align-self: auto 
+2. order: 
+3. flex-grow: 
+4. flex-shrink
+5 flex-basis:
+
+
+
+/<------ BUILDING THE HEADER ---------> 
+Expected To Learn 
+1. Why to use SVG icons vs font icons
+https://icomoon.io/app/#/select
+2. how to find, generate and use SVG sprites 
+3. HOw to change the color of an SVG icon in CSS 
+fo;;
+4. HOw to use more advanced flexbox alignment techniques justify-content, align-items, align-self and flex. 
+
+
