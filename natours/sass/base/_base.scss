@@ -9,7 +9,7 @@
 
 html { 
   // Defines what one rem should be.
-  font-size: 62.5%;   // 1rem = 10px; 10px/16px = 62.5%
+  font-size:62.5%;   // 1rem = 10px; 10px/16px = 62.5%
 
   @include respond(tab-land) {  // width < 900
     font-size: 56.25%;  //1 rem = 9px, 9/16 = 56.25%  //
@@ -36,4 +36,12 @@ body {
   @include respond(tab-port) {
     padding:0;
   }
+}
+
+
+// change selection , highlighter text 
+::selection {
+  background-color: $color-primary;
+  color: $color-white;
+
 }

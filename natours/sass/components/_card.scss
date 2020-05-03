@@ -158,6 +158,8 @@
 // Perpective: Make the rotation look like it's coming towards you. 
 
 //<------------------------------------- Add media Queries-----------------------------> 
+// only screen works on only screen devices 
+// only screen and hover: none, for devices that don't have a mouse pointer
 //@include respond(tab-port) {
   @media only screen and (max-width: 56.25em),
   only screen and (hover: none) {
