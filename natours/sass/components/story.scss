@@ -35,14 +35,28 @@ transform: skewX(-12deg);
   }
   // making a circle shape
   &__shape { 
+   
     width: 15rem; 
     height: 15rem; 
     background-color: orangered;
     float: left; 
-    -webkit-shape-outside: circle(50% at 50% 50%);
-    shape-outside: circle(50% at 50% 50%);
-    clip-path: circle(50% at 50% 50%);
     transform: translateX(-3rem) skewX(12deg);
+    border-radius: 50%;
+    // -webkit-shape-outside: circle(50% at 50% 50%);
+    // shape-outside: circle(50% at 50% 50%);
+    // clip-path: circle(50% at 50% 50%);
+   
+      // Graceful degradation for non-supported browsers 
+      @supports (clip-path: polygon(0 0)) or (-webkit-clip-path: polygon(0 0)) {
+
+        -webkit-clip-path: circle(50% at 50% 50%);
+        clip-path: circle(50% at 50% 50%);
+        -webkit-shape-outside: circle(50% at 50% 50%);
+        shape-outside: circle(50% at 50% 50%);
+        border-radius: none;
+    }
+
+
     
 
     @include respond(phone) {
