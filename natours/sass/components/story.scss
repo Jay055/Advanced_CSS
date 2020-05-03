@@ -10,8 +10,27 @@ font-size: 1.6rem;
 transform: skewX(-12deg);
 
 
+//<---------- ADD MEDIA QUERIES -----------> 
+@include respond(tab-port) { 
+  width: 100%;
+  padding: 4rem;
+  padding-left: 7rem;
+  
+}
+
+@include respond(phone) {
+  transform: skewX(0);
+  
+}
+
+
   & > * {   // Use direct child to select 
     transform: skewX(12deg);
+
+@include respond(phone) {
+  transform: skewX(0);
+  
+}
 
   }
   // making a circle shape
@@ -24,7 +43,12 @@ transform: skewX(-12deg);
     shape-outside: circle(50% at 50% 50%);
     clip-path: circle(50% at 50% 50%);
     transform: translateX(-3rem) skewX(12deg);
+    
 
+    @include respond(phone) {
+      transform: translateX(-3rem) skewX(0);
+  
+}
 
     &__img { 
       height: 100%; // height of the parent. 
@@ -35,6 +59,13 @@ transform: skewX(-12deg);
   }
     &__text { 
       transform: skewX(12deg);
+
+      // Add Media Queries 
+    @include respond(phone) {
+    transform: skewX(0);
+  
+}
+
     }
 
   &__caption { 
